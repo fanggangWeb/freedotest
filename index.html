@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>初始化三维球</title>
+    <link rel="stylesheet" href="http://forweb.gbim360.com/2.3.0/freedo/Freedo/Widgets/widgets.css">
+    <link rel="stylesheet" href="http://forweb.gbim360.com/2.3.0/freedox/Examples/static/bucket.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <script src="http://forweb.gbim360.com/2.3.0/freedo/Freedo/Freedo.js"></script>
+    <script src="http://forweb.gbim360.com/2.3.0/freedox/FreedoX/ThirdParty/1710_lodash/lodash.min.js"></script>
+    <script src="http://forweb.gbim360.com/2.3.0/freedox/FreedoX/FreedoX.js"></script>
+    <script src="http://forweb.gbim360.com/2.3.0/freedox/Examples/static/Sandcastle-header.js"></script>
+    <div class="container">
+        <div id="freedoContainer" class="fullSize"></div>
+        <div class="myElement">
+            飞渡api
+        </div>
+    </div>
+
+    <script>
+        var viewer = Freedo.FdApp.createDefaultViewer('freedoContainer', { homeButton: true }, { hasProvinceBoundaries: true }, { planeMode: true }, { showMouseCenterIcon: false });
+        var scene = viewer.scene
+
+        var data = [
+            { id: 1, type: 'less', start: 10000, end: 0 },
+            { id: 2, type: 'more', start: 0, end: 10000 },
+            { id: 3, type: 'range', start: 10000, end: 20000 }
+        ]
+
+        // 设置天空盒或者背景色 setSkyBox
+        Freedo.FdApp.setSkyBox(scene, {
+            color: [120, 120, 120, 1]
+        });
+        // 漫游操作模块 鸟瞰 aerialView(scene [, duration] [, west] [, south] [, east] [, north])
+        // Freedo.FdCamera.aerialView(scene, 4, 1, 15, 125, 15)
+
+        // capture(scene, captureResultFunc [, width] [, height]) 截屏
+        // 其中图像为参数为base64位字符串image图像
+        // function saveCapturedScreenImage(imageData, width, height) {
+        //     console.log(imageData)
+        // }
+        // setTimeout(() => {
+        //     Freedo.FdCamera.capture(scene, saveCapturedScreenImage, 400, 400);
+        // }, 1000);
+
+        // flyAround(position, scene [, options])相机绕模型包围体顺时针飞行两周，缓慢停止
+        // Freedo.FdCamera.flyAround(Freedo.Cartesian3.fromDegrees(116, 31, 100), viewer.scene, {
+        //     delay: 5,
+        //     duration: 10,
+        //     rotateAngleRange: Freedo.Math.PI * 4.0
+        // });
+
+        //  flyToByCameraInfo(camera, cameraInfo, options) 飞入指定的相机方位，会有一个飞入的过程。
+        // var cameraInfo = [119.0, 39.0, 6000000.0, 0.0, -90.0, 0.0];
+        // Freedo.FdCamera.flyToByCameraInfo(viewer.scene.camera, cameraInfo);
+
+        // flyToByPosition(camera, positon, range) 飞入指定位置。
+        // var positon = [119.0, 90.0, 9000000.0];
+        // Freedo.FdCamera.flyToByPosition(viewer.scene.camera, positon);
+
+        // var container = document.getElementById('freedoContainer');
+        // var url = "" // 外部json的地址
+        // var pmodelsManager = new Freedo.FdApp.FdPModels(viewer.scene, {
+        //     url: url
+        // });
+        // pmodelsManager.readyPromise.then(function (tileset) {
+        //     console.log(tileset)
+        //     viewer.camera.viewBoundingSphere(tileset.boundingSphere, new Freedo.HeadingPitchRange(0, 0.5, 0));
+        //     viewer.camera.lookAtTransform(Freedo.Matrix4.IDENTITY);
+        // });
+
+        // flyToEast(scene, boundingSphere) 相机飞到模型包围球东边，朝向模型
+        // var boundingSphere = tileset.boundingSphere; // tileset is not defined 从控制 台打印也未找到该属性，暂时不用，此属性对应上面 需要传入json
+        // Freedo.FdCamera.flyToEast(viewer.scene, boundingSphere);
+
+        // flyToNorth(scene, boundingSphere) 相机飞到模型包围球北边，朝向模型
+    </script>
+</body>
+
+</html>
